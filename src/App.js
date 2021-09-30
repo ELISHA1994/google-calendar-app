@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {AuthenticatedApp} from "./Authenticated-App";
+import {UnauthenticatedApp} from "./Unauthenticated-App";
+// import Logout from "./Logout";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [auth, setAuth] = React.useState(null)
+
+    return auth ? (
+        <AuthenticatedApp setAuth={setAuth} auth={auth}/>
+  ) : (
+        <UnauthenticatedApp setAuth={setAuth}/>
+    )
 }
 
 export default App;
