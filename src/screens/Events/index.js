@@ -1,18 +1,21 @@
 import React from 'react';
+import { useGoogleLogout } from "react-google-login";
 import { Button, Col, Row } from "react-bootstrap";
 import EventCard from "../../components/EventCard";
 import Axios from "axios"
 import "./Events.css";
 
-function Events({ auth }) {
+const clientId = '202767119530-kp425ls86h63lsgt1jr03ven88c8av0f.apps.googleusercontent.com';
+
+function Events({ auth, setAuth }) {
     const [events, setEvents] = React.useState(null);
-    const [addModal, setAddModal] = React.useState(false);
-    console.log(addModal);
+    // const [addModal, setAddModal] = React.useState(false);
 
     React.useEffect(() => {
         async function getEvents() {
             const response = await Axios.post(
                 'https://roja-tech-google-calendar-app.herokuapp.com/getCalendarEvents', {token: auth}
+                // 'http://localhost:1337/getCalendarEvents', {token: auth}
             )
             setEvents(response.data);
         }
@@ -35,13 +38,25 @@ function Events({ auth }) {
         "highlight13",
         "highlight14"
     ];
-    const AddModalShow = () => {
-        setAddModal(true);
+    // const AddModalShow = () => {
+    //     setAddModal(true);
+    // };
+
+    const onLogoutSuccess = (res) => {
+        console.log('Logged out Success');
+        alert('Logged out Successfully ✌');
+        setAuth(null);
     };
 
-    // const AddModalClose = () => {
-    //     setAddModal(false);
-    // };
+    const onFailure = () => {
+        console.log('Handle failure cases');
+    };
+
+    const { signOut } = useGoogleLogout({
+        clientId,
+        onLogoutSuccess,
+        onFailure,
+    });
 
     const eventTypeList = ['default', 'leave', 'travel', 'birthdays'];
     console.log('Events Array', events)
@@ -64,13 +79,13 @@ function Events({ auth }) {
                         <Col lg={6} md={6} sm={6} xs={6}>
                             <div className="div-create">
                                 <h6>
-                                    Create event{" "}
+                                    LogOut {" "}
                                     <Button
-                                        onClick={AddModalShow}
+                                        onClick={signOut}
                                         variant="outline-primary"
                                         size="sm"
                                     >
-                                        +
+                                        <img src="icons/google.svg" alt="google login" className="event-icon" />
                                     </Button>{" "}
                                 </h6>
                             </div>

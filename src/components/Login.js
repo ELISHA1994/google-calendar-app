@@ -14,6 +14,7 @@ function Login({ setAuth }) {
         console.log('Login Success: currentUser:');
         // console.log(res)
         const tokenObj = await Axios.post('https://roja-tech-google-calendar-app.herokuapp.com/getToken', { code: res.code})
+        // const tokenObj = await Axios.post('http://localhost:1337/getToken', { code: res.code})
         // console.log(tokenObj.data.tokens)
         alert(
             `Logged in successfully welcome 😍.`

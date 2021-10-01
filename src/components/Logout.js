@@ -7,7 +7,6 @@ function Logout({ setAuth }) {
     const onLogoutSuccess = (res) => {
         console.log('Logged out Success');
         alert('Logged out Successfully ✌');
-        // localStorage.setItem('refreshToken', null)
         setAuth(null);
     };
 

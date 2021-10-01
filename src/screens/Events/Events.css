@@ -7,3 +7,11 @@
 .cards {
     padding-bottom: 20px;
 }
+.event-icon {
+    height: 25px;
+    width: 25px;
+    margin-right: 0px;
+    position: absolute;
+    left: 30px;
+    align-items: center;
+}
