@@ -85,7 +85,7 @@ function Events({ auth, setAuth }) {
                                         variant="outline-primary"
                                         size="sm"
                                     >
-                                        <img src="icons/google.svg" alt="google login" className="event-icon" />
+                                        <img src="icons/google.svg" alt="google login" />
                                     </Button>{" "}
                                 </h6>
                             </div>
