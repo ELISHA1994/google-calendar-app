@@ -9,7 +9,6 @@ const clientId = '202767119530-kp425ls86h63lsgt1jr03ven88c8av0f.apps.googleuserc
 
 function Events({ auth, setAuth }) {
     const [events, setEvents] = React.useState(null);
-    // const [addModal, setAddModal] = React.useState(false);
 
     React.useEffect(() => {
         async function getEvents() {
@@ -38,9 +37,6 @@ function Events({ auth, setAuth }) {
         "highlight13",
         "highlight14"
     ];
-    // const AddModalShow = () => {
-    //     setAddModal(true);
-    // };
 
     const onLogoutSuccess = (res) => {
         console.log('Logged out Success');
